@@ -123,6 +123,7 @@ AuthSettings = TypedDict(
     {
         "BasicAuth": BasicAuthSetting,
         "ApiKeyAuth": APIKeyAuthSetting,
+         "BearerAuth": BearerAuthSetting,
     },
     total=False,
 )
