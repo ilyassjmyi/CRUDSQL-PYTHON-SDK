@@ -42,22 +42,25 @@ class DynamicApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
-
     @validate_call
-    def model_filter_post(
+    def getWhere(
         self,
         model: Annotated[StrictStr, Field(description="Model name")],
         filter: Annotated[QueryQueryFilter, Field(description="Filter conditions")],
         page: Annotated[Optional[StrictInt], Field(description="Page number")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page")] = None,
-        sort: Annotated[Optional[StrictStr], Field(description="Sort field and direction (e.g., name:asc,age:desc)")] = None,
+        page_size: Annotated[
+            Optional[StrictInt], Field(description="Items per page")
+        ] = None,
+        sort: Annotated[
+            Optional[StrictStr],
+            Field(description="Sort field and direction (e.g., name:asc,age:desc)"),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -98,7 +101,7 @@ class DynamicApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._model_filter_post_serialize(
             model=model,
@@ -109,18 +112,17 @@ class DynamicApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "QueryFilterResponse",
-            '400': "ApiErrorResponse",
-            '404': "ApiErrorResponse",
-            '500': "ApiErrorResponse",
+            "200": "QueryFilterResponse",
+            "400": "ApiErrorResponse",
+            "404": "ApiErrorResponse",
+            "500": "ApiErrorResponse",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
@@ -128,22 +130,25 @@ class DynamicApi:
             response_types_map=_response_types_map,
         ).data
 
-
     @validate_call
     def model_filter_post_with_http_info(
         self,
         model: Annotated[StrictStr, Field(description="Model name")],
         filter: Annotated[QueryQueryFilter, Field(description="Filter conditions")],
         page: Annotated[Optional[StrictInt], Field(description="Page number")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page")] = None,
-        sort: Annotated[Optional[StrictStr], Field(description="Sort field and direction (e.g., name:asc,age:desc)")] = None,
+        page_size: Annotated[
+            Optional[StrictInt], Field(description="Items per page")
+        ] = None,
+        sort: Annotated[
+            Optional[StrictStr],
+            Field(description="Sort field and direction (e.g., name:asc,age:desc)"),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -184,7 +189,7 @@ class DynamicApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._model_filter_post_serialize(
             model=model,
@@ -195,18 +200,17 @@ class DynamicApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "QueryFilterResponse",
-            '400': "ApiErrorResponse",
-            '404': "ApiErrorResponse",
-            '500': "ApiErrorResponse",
+            "200": "QueryFilterResponse",
+            "400": "ApiErrorResponse",
+            "404": "ApiErrorResponse",
+            "500": "ApiErrorResponse",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
@@ -214,22 +218,25 @@ class DynamicApi:
             response_types_map=_response_types_map,
         )
 
-
     @validate_call
     def model_filter_post_without_preload_content(
         self,
         model: Annotated[StrictStr, Field(description="Model name")],
         filter: Annotated[QueryQueryFilter, Field(description="Filter conditions")],
         page: Annotated[Optional[StrictInt], Field(description="Page number")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page")] = None,
-        sort: Annotated[Optional[StrictStr], Field(description="Sort field and direction (e.g., name:asc,age:desc)")] = None,
+        page_size: Annotated[
+            Optional[StrictInt], Field(description="Items per page")
+        ] = None,
+        sort: Annotated[
+            Optional[StrictStr],
+            Field(description="Sort field and direction (e.g., name:asc,age:desc)"),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -270,7 +277,7 @@ class DynamicApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._model_filter_post_serialize(
             model=model,
@@ -281,21 +288,19 @@ class DynamicApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "QueryFilterResponse",
-            '400': "ApiErrorResponse",
-            '404': "ApiErrorResponse",
-            '500': "ApiErrorResponse",
+            "200": "QueryFilterResponse",
+            "400": "ApiErrorResponse",
+            "404": "ApiErrorResponse",
+            "500": "ApiErrorResponse",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         return response_data.response
-
 
     def _model_filter_post_serialize(
         self,
@@ -312,8 +317,7 @@ class DynamicApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {
-        }
+        _collection_formats: Dict[str, str] = {}
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -326,56 +330,48 @@ class DynamicApi:
 
         # process the path parameters
         if model is not None:
-            _path_params['model'] = model
+            _path_params["model"] = model
         # process the query parameters
         if page is not None:
-            
-            _query_params.append(('page', page))
-            
+
+            _query_params.append(("page", page))
+
         if page_size is not None:
-            
-            _query_params.append(('pageSize', page_size))
-            
+
+            _query_params.append(("pageSize", page_size))
+
         if sort is not None:
-            
-            _query_params.append(('sort', sort))
-            
+
+            _query_params.append(("sort", sort))
+
         # process the header parameters
         # process the form parameters
         # process the body parameter
         if filter is not None:
             _body_params = filter
 
-
         # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
             )
 
         # set the HTTP header `Content-Type`
         if _content_type:
-            _header_params['Content-Type'] = _content_type
+            _header_params["Content-Type"] = _content_type
         else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
+            _default_content_type = self.api_client.select_header_content_type(
+                ["application/json"]
             )
             if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
+                _header_params["Content-Type"] = _default_content_type
 
         # authentication setting
-        _auth_settings: List[str] = [
-        ]
+        _auth_settings: List[str] = []
 
         return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/{model}/filter',
+            method="POST",
+            resource_path="/{model}/filter",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -385,26 +381,27 @@ class DynamicApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth
+            _request_auth=_request_auth,
         )
 
-
-
-
     @validate_call
-    def model_get(
+    def getAll(
         self,
         model: Annotated[StrictStr, Field(description="Model Name")],
         page: Annotated[Optional[StrictInt], Field(description="Page number")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page")] = None,
-        sort: Annotated[Optional[StrictStr], Field(description="Sort field and direction (e.g., name:asc)")] = None,
+        page_size: Annotated[
+            Optional[StrictInt], Field(description="Items per page")
+        ] = None,
+        sort: Annotated[
+            Optional[StrictStr],
+            Field(description="Sort field and direction (e.g., name:asc)"),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -443,7 +440,7 @@ class DynamicApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._model_get_serialize(
             model=model,
@@ -453,16 +450,15 @@ class DynamicApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "QueryFilterResponse",
-            '400': "ApiErrorResponse",
+            "200": "QueryFilterResponse",
+            "400": "ApiErrorResponse",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
@@ -470,21 +466,24 @@ class DynamicApi:
             response_types_map=_response_types_map,
         ).data
 
-
     @validate_call
     def model_get_with_http_info(
         self,
         model: Annotated[StrictStr, Field(description="Model Name")],
         page: Annotated[Optional[StrictInt], Field(description="Page number")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page")] = None,
-        sort: Annotated[Optional[StrictStr], Field(description="Sort field and direction (e.g., name:asc)")] = None,
+        page_size: Annotated[
+            Optional[StrictInt], Field(description="Items per page")
+        ] = None,
+        sort: Annotated[
+            Optional[StrictStr],
+            Field(description="Sort field and direction (e.g., name:asc)"),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -523,7 +522,7 @@ class DynamicApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._model_get_serialize(
             model=model,
@@ -533,16 +532,15 @@ class DynamicApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "QueryFilterResponse",
-            '400': "ApiErrorResponse",
+            "200": "QueryFilterResponse",
+            "400": "ApiErrorResponse",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
@@ -550,21 +548,24 @@ class DynamicApi:
             response_types_map=_response_types_map,
         )
 
-
     @validate_call
     def model_get_without_preload_content(
         self,
         model: Annotated[StrictStr, Field(description="Model Name")],
         page: Annotated[Optional[StrictInt], Field(description="Page number")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page")] = None,
-        sort: Annotated[Optional[StrictStr], Field(description="Sort field and direction (e.g., name:asc)")] = None,
+        page_size: Annotated[
+            Optional[StrictInt], Field(description="Items per page")
+        ] = None,
+        sort: Annotated[
+            Optional[StrictStr],
+            Field(description="Sort field and direction (e.g., name:asc)"),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -603,7 +604,7 @@ class DynamicApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._model_get_serialize(
             model=model,
@@ -613,19 +614,17 @@ class DynamicApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "QueryFilterResponse",
-            '400': "ApiErrorResponse",
+            "200": "QueryFilterResponse",
+            "400": "ApiErrorResponse",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         return response_data.response
-
 
     def _model_get_serialize(
         self,
@@ -641,8 +640,7 @@ class DynamicApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {
-        }
+        _collection_formats: Dict[str, str] = {}
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -655,41 +653,36 @@ class DynamicApi:
 
         # process the path parameters
         if model is not None:
-            _path_params['model'] = model
+            _path_params["model"] = model
         # process the query parameters
         if page is not None:
-            
-            _query_params.append(('page', page))
-            
+
+            _query_params.append(("page", page))
+
         if page_size is not None:
-            
-            _query_params.append(('pageSize', page_size))
-            
+
+            _query_params.append(("pageSize", page_size))
+
         if sort is not None:
-            
-            _query_params.append(('sort', sort))
-            
+
+            _query_params.append(("sort", sort))
+
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
-
         # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
             )
 
-
         # authentication setting
-        _auth_settings: List[str] = [
-        ]
+        _auth_settings: List[str] = []
 
         return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/{model}',
+            method="GET",
+            resource_path="/{model}",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -699,14 +692,11 @@ class DynamicApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth
+            _request_auth=_request_auth,
         )
 
-
-
-
     @validate_call
-    def model_id_delete(
+    def deleteById(
         self,
         model: Annotated[StrictStr, Field(description="Model Name")],
         id: Annotated[StrictStr, Field(description="Entity ID")],
@@ -714,9 +704,8 @@ class DynamicApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -751,7 +740,7 @@ class DynamicApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._model_id_delete_serialize(
             model=model,
@@ -759,23 +748,21 @@ class DynamicApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ApiErrorResponse",
-            '404': "ApiErrorResponse",
+            "200": "ApiErrorResponse",
+            "404": "ApiErrorResponse",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
-
 
     @validate_call
     def model_id_delete_with_http_info(
@@ -786,9 +773,8 @@ class DynamicApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -823,7 +809,7 @@ class DynamicApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._model_id_delete_serialize(
             model=model,
@@ -831,23 +817,21 @@ class DynamicApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ApiErrorResponse",
-            '404': "ApiErrorResponse",
+            "200": "ApiErrorResponse",
+            "404": "ApiErrorResponse",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
-
 
     @validate_call
     def model_id_delete_without_preload_content(
@@ -858,9 +842,8 @@ class DynamicApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -895,7 +878,7 @@ class DynamicApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._model_id_delete_serialize(
             model=model,
@@ -903,19 +886,17 @@ class DynamicApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ApiErrorResponse",
-            '404': "ApiErrorResponse",
+            "200": "ApiErrorResponse",
+            "404": "ApiErrorResponse",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         return response_data.response
-
 
     def _model_id_delete_serialize(
         self,
@@ -929,8 +910,7 @@ class DynamicApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {
-        }
+        _collection_formats: Dict[str, str] = {}
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -943,31 +923,26 @@ class DynamicApi:
 
         # process the path parameters
         if model is not None:
-            _path_params['model'] = model
+            _path_params["model"] = model
         if id is not None:
-            _path_params['id'] = id
+            _path_params["id"] = id
         # process the query parameters
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
-
         # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
             )
 
-
         # authentication setting
-        _auth_settings: List[str] = [
-        ]
+        _auth_settings: List[str] = []
 
         return self.api_client.param_serialize(
-            method='DELETE',
-            resource_path='/{model}/{id}',
+            method="DELETE",
+            resource_path="/{model}/{id}",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -977,14 +952,11 @@ class DynamicApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth
+            _request_auth=_request_auth,
         )
 
-
-
-
     @validate_call
-    def model_id_get(
+    def getById(
         self,
         model: Annotated[StrictStr, Field(description="Model Name")],
         id: Annotated[StrictStr, Field(description="Entity ID")],
@@ -992,9 +964,8 @@ class DynamicApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -1029,7 +1000,7 @@ class DynamicApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._model_id_get_serialize(
             model=model,
@@ -1037,23 +1008,21 @@ class DynamicApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "QueryEntityWithRelations",
-            '404': "ApiErrorResponse",
+            "200": "QueryEntityWithRelations",
+            "404": "ApiErrorResponse",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
-
 
     @validate_call
     def model_id_get_with_http_info(
@@ -1064,9 +1033,8 @@ class DynamicApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -1101,7 +1069,7 @@ class DynamicApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._model_id_get_serialize(
             model=model,
@@ -1109,23 +1077,21 @@ class DynamicApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "QueryEntityWithRelations",
-            '404': "ApiErrorResponse",
+            "200": "QueryEntityWithRelations",
+            "404": "ApiErrorResponse",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
-
 
     @validate_call
     def model_id_get_without_preload_content(
@@ -1136,9 +1102,8 @@ class DynamicApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -1173,7 +1138,7 @@ class DynamicApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._model_id_get_serialize(
             model=model,
@@ -1181,19 +1146,17 @@ class DynamicApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "QueryEntityWithRelations",
-            '404': "ApiErrorResponse",
+            "200": "QueryEntityWithRelations",
+            "404": "ApiErrorResponse",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         return response_data.response
-
 
     def _model_id_get_serialize(
         self,
@@ -1207,8 +1170,7 @@ class DynamicApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {
-        }
+        _collection_formats: Dict[str, str] = {}
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -1221,31 +1183,26 @@ class DynamicApi:
 
         # process the path parameters
         if model is not None:
-            _path_params['model'] = model
+            _path_params["model"] = model
         if id is not None:
-            _path_params['id'] = id
+            _path_params["id"] = id
         # process the query parameters
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
-
         # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
             )
 
-
         # authentication setting
-        _auth_settings: List[str] = [
-        ]
+        _auth_settings: List[str] = []
 
         return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/{model}/{id}',
+            method="GET",
+            resource_path="/{model}/{id}",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1255,14 +1212,11 @@ class DynamicApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth
+            _request_auth=_request_auth,
         )
 
-
-
-
     @validate_call
-    def model_id_put(
+    def UpdateById(
         self,
         model: Annotated[StrictStr, Field(description="Model Name")],
         id: Annotated[StrictStr, Field(description="Entity ID")],
@@ -1271,9 +1225,8 @@ class DynamicApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -1310,7 +1263,7 @@ class DynamicApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._model_id_put_serialize(
             model=model,
@@ -1319,24 +1272,22 @@ class DynamicApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "QueryEntityWithRelations",
-            '400': "ApiErrorResponse",
-            '404': "ApiErrorResponse",
+            "200": "QueryEntityWithRelations",
+            "400": "ApiErrorResponse",
+            "404": "ApiErrorResponse",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
-
 
     @validate_call
     def model_id_put_with_http_info(
@@ -1348,9 +1299,8 @@ class DynamicApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -1387,7 +1337,7 @@ class DynamicApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._model_id_put_serialize(
             model=model,
@@ -1396,24 +1346,22 @@ class DynamicApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "QueryEntityWithRelations",
-            '400': "ApiErrorResponse",
-            '404': "ApiErrorResponse",
+            "200": "QueryEntityWithRelations",
+            "400": "ApiErrorResponse",
+            "404": "ApiErrorResponse",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
-
 
     @validate_call
     def model_id_put_without_preload_content(
@@ -1425,9 +1373,8 @@ class DynamicApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -1464,7 +1411,7 @@ class DynamicApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._model_id_put_serialize(
             model=model,
@@ -1473,20 +1420,18 @@ class DynamicApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "QueryEntityWithRelations",
-            '400': "ApiErrorResponse",
-            '404': "ApiErrorResponse",
+            "200": "QueryEntityWithRelations",
+            "400": "ApiErrorResponse",
+            "404": "ApiErrorResponse",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         return response_data.response
-
 
     def _model_id_put_serialize(
         self,
@@ -1501,8 +1446,7 @@ class DynamicApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {
-        }
+        _collection_formats: Dict[str, str] = {}
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -1515,9 +1459,9 @@ class DynamicApi:
 
         # process the path parameters
         if model is not None:
-            _path_params['model'] = model
+            _path_params["model"] = model
         if id is not None:
-            _path_params['id'] = id
+            _path_params["id"] = id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -1525,36 +1469,28 @@ class DynamicApi:
         if entity is not None:
             _body_params = entity
 
-
         # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
             )
 
         # set the HTTP header `Content-Type`
         if _content_type:
-            _header_params['Content-Type'] = _content_type
+            _header_params["Content-Type"] = _content_type
         else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
+            _default_content_type = self.api_client.select_header_content_type(
+                ["application/json"]
             )
             if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
+                _header_params["Content-Type"] = _default_content_type
 
         # authentication setting
-        _auth_settings: List[str] = [
-        ]
+        _auth_settings: List[str] = []
 
         return self.api_client.param_serialize(
-            method='PUT',
-            resource_path='/{model}/{id}',
+            method="PUT",
+            resource_path="/{model}/{id}",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1564,14 +1500,11 @@ class DynamicApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth
+            _request_auth=_request_auth,
         )
 
-
-
-
     @validate_call
-    def model_post(
+    def create(
         self,
         model: Annotated[StrictStr, Field(description="Model Name")],
         entity: Annotated[QueryEntityWithRelations, Field(description="Entity Data")],
@@ -1579,9 +1512,8 @@ class DynamicApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -1616,7 +1548,7 @@ class DynamicApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._model_post_serialize(
             model=model,
@@ -1624,23 +1556,21 @@ class DynamicApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "QueryEntityWithRelations",
-            '400': "ApiErrorResponse",
+            "201": "QueryEntityWithRelations",
+            "400": "ApiErrorResponse",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
-
 
     @validate_call
     def model_post_with_http_info(
@@ -1651,9 +1581,8 @@ class DynamicApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -1688,7 +1617,7 @@ class DynamicApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._model_post_serialize(
             model=model,
@@ -1696,23 +1625,21 @@ class DynamicApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "QueryEntityWithRelations",
-            '400': "ApiErrorResponse",
+            "201": "QueryEntityWithRelations",
+            "400": "ApiErrorResponse",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
-
 
     @validate_call
     def model_post_without_preload_content(
@@ -1723,9 +1650,8 @@ class DynamicApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -1760,7 +1686,7 @@ class DynamicApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._model_post_serialize(
             model=model,
@@ -1768,19 +1694,17 @@ class DynamicApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index
+            _host_index=_host_index,
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "QueryEntityWithRelations",
-            '400': "ApiErrorResponse",
+            "201": "QueryEntityWithRelations",
+            "400": "ApiErrorResponse",
         }
         response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
+            *_param, _request_timeout=_request_timeout
         )
         return response_data.response
-
 
     def _model_post_serialize(
         self,
@@ -1794,8 +1718,7 @@ class DynamicApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {
-        }
+        _collection_formats: Dict[str, str] = {}
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -1808,7 +1731,7 @@ class DynamicApi:
 
         # process the path parameters
         if model is not None:
-            _path_params['model'] = model
+            _path_params["model"] = model
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -1816,36 +1739,28 @@ class DynamicApi:
         if entity is not None:
             _body_params = entity
 
-
         # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
             )
 
         # set the HTTP header `Content-Type`
         if _content_type:
-            _header_params['Content-Type'] = _content_type
+            _header_params["Content-Type"] = _content_type
         else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
+            _default_content_type = self.api_client.select_header_content_type(
+                ["application/json"]
             )
             if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
+                _header_params["Content-Type"] = _default_content_type
 
         # authentication setting
-        _auth_settings: List[str] = [
-        ]
+        _auth_settings: List[str] = []
 
         return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/{model}',
+            method="POST",
+            resource_path="/{model}",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1855,7 +1770,5 @@ class DynamicApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth
+            _request_auth=_request_auth,
         )
-
-
