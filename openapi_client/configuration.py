@@ -548,13 +548,13 @@ class Configuration:
                     "ApiKeyAuth",
                 ),
             }
-            if self.access_token is not None:
-                auth["BearerAuth"] = {
-                    "type": "bearer",
-                    "in": "header",
-                    "key": "Authorization",
-                    "value": f"Bearer {self.access_token}",
-                }
+        if self.access_token is not None:
+            auth["BearerAuth"] = {
+                "type": "bearer",
+                "in": "header",
+                "key": "Authorization",
+                "value": f"Bearer {self.access_token}",
+            }
         return auth
 
     def to_debug_report(self) -> str:
