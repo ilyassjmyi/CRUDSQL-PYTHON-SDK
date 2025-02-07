@@ -20,7 +20,7 @@ from setuptools import setup, find_packages  # noqa: H301
 # python setup.py install
 #
 # prerequisite: setuptools
-# http://pypi.python.org/pypi/setuptools
+# http://pypi.python.org/pypi/setuptoolsacti
 NAME = "snapbuild_client_sdk"
 VERSION = "1.0.0"
 PYTHON_REQUIRES = ">= 3.8"
@@ -49,3 +49,5 @@ setup(
     """,  # noqa: E501
     package_data={"openapi_client": ["py.typed"]},
 )
+
+

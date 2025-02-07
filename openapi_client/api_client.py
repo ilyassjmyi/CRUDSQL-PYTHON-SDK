@@ -670,6 +670,8 @@ class ApiClient:
         if auth_setting['in'] == 'cookie':
             headers['Cookie'] = auth_setting['value']
         elif auth_setting['in'] == 'header':
+            if auth_setting['type'] == 'bearer':
+                headers[auth_setting['key']] = f"Bearer {auth_setting['value']}"
             if auth_setting['type'] != 'http-signature':
                 headers[auth_setting['key']] = auth_setting['value']
         elif auth_setting['in'] == 'query':
