@@ -90,6 +90,10 @@ class ApiClient:
         if header_name is not None:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
+        auth_settings = configuration.auth_settings()
+        for auth in auth_settings.values():
+            if auth['in'] == 'header':
+                self.default_headers[auth['key']] = auth['value']
         # Set default User-Agent.
         self.user_agent = 'OpenAPI-Generator/1.0.0/python'
         self.client_side_validation = configuration.client_side_validation
