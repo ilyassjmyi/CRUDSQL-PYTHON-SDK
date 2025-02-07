@@ -271,6 +271,7 @@ class ApiClient:
 
         try:
             # perform request and return response
+            print(f"Headers: {header_params}") 
             response_data = self.rest_client.request(
                 method, url,
                 headers=header_params,
@@ -638,6 +639,7 @@ class ApiClient:
         else:
             for auth in auth_settings:
                 auth_setting = self.configuration.auth_settings().get(auth)
+                print("auth settings here",auth_setting)
                 if auth_setting:
                     self._apply_auth_params(
                         headers,
@@ -666,7 +668,9 @@ class ApiClient:
         :body: A object representing the body of the HTTP request.
         The object type is the return value of sanitize_for_serialization().
         :param auth_setting: auth settings for the endpoint
-        """
+        """ 
+        print(f"Applying auth setting: {auth_setting}")  # Debugging line
+
         if auth_setting['in'] == 'cookie':
             headers['Cookie'] = auth_setting['value']
         elif auth_setting['in'] == 'header':
