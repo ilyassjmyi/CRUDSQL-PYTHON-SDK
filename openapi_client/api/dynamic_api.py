@@ -461,6 +461,7 @@ class DynamicApi:
             *_param, _request_timeout=_request_timeout
         )
         response_data.read()
+        print(response_data.read())
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -971,7 +972,7 @@ class DynamicApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> QueryEntityWithRelations:
+    ) -> QueryFilterResponse:
         """Get an entity by ID
 
         Retrieve a single entity by its ID
@@ -1012,7 +1013,7 @@ class DynamicApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "QueryEntityWithRelations",
+            "200": "QueryFilterResponse",
             "404": "ApiErrorResponse",
         }
         response_data = self.api_client.call_api(
@@ -1040,7 +1041,7 @@ class DynamicApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[QueryEntityWithRelations]:
+    ) -> ApiResponse[QueryFilterResponse]:
         """Get an entity by ID
 
         Retrieve a single entity by its ID
@@ -1081,7 +1082,7 @@ class DynamicApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "QueryEntityWithRelations",
+            "200": "QueryFilterResponse",
             "404": "ApiErrorResponse",
         }
         response_data = self.api_client.call_api(
@@ -1232,7 +1233,7 @@ class DynamicApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> QueryEntityWithRelations:
+    ) -> QueryFilterResponse:
         """Update an entity
 
         Update an existing entity by its ID
@@ -1276,7 +1277,7 @@ class DynamicApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "QueryEntityWithRelations",
+            "200": "QueryFilterResponse",
             "400": "ApiErrorResponse",
             "404": "ApiErrorResponse",
         }
@@ -1306,7 +1307,7 @@ class DynamicApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[QueryEntityWithRelations]:
+    ) -> ApiResponse[QueryFilterResponse]:
         """Update an entity
 
         Update an existing entity by its ID
@@ -1350,7 +1351,7 @@ class DynamicApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "QueryEntityWithRelations",
+            "200": "QueryFilterResponse",
             "400": "ApiErrorResponse",
             "404": "ApiErrorResponse",
         }
@@ -1519,7 +1520,7 @@ class DynamicApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> QueryEntityWithRelations:
+    ) -> QueryFilterResponse:
         """Create a new entity
 
         Create a new entity of the specified model type
@@ -1560,7 +1561,7 @@ class DynamicApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "201": "QueryEntityWithRelations",
+            "201": "QueryFilterResponse",
             "400": "ApiErrorResponse",
         }
         response_data = self.api_client.call_api(
@@ -1588,7 +1589,7 @@ class DynamicApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[QueryEntityWithRelations]:
+    ) -> ApiResponse[QueryFilterResponse]:
         """Create a new entity
 
         Create a new entity of the specified model type
@@ -1629,7 +1630,7 @@ class DynamicApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "201": "QueryEntityWithRelations",
+            "201": "QueryFilterResponse",
             "400": "ApiErrorResponse",
         }
         response_data = self.api_client.call_api(
