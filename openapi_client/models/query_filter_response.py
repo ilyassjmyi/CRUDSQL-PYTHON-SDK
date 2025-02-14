@@ -18,8 +18,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt,field_validator,RootModel
-from typing import Any, ClassVar, Dict, List, Optional,Union
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, field_validator, RootModel
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,9 +28,10 @@ class EntityData(RootModel):
     """
     Custom model to handle both single entity and multiple entities
     """
+
     root: Union[Dict[str, Any], List[Dict[str, Any]]]
 
-    @field_validator('root')
+    @field_validator("root")
     @classmethod
     def validate_root(cls, v):
         # Ensure we have either a dict or a list of dicts
@@ -47,30 +48,51 @@ class EntityData(RootModel):
 
     def dict(self, *args, **kwargs):
         return self.root
+
+
 EntityData.model_rebuild()
 
 
 class QueryFilterResponse(BaseModel):
     """
     Paginated response containing filtered entities and metadata Used for both simple list operations and complex filtered queries
-    """ # noqa: E501
+    """  # noqa: E501
+
     data: Optional[Union[Dict[str, Any], List[Dict[str, Any]]]] = Field(
-        default=None, 
-        description="Entity or array of entities matching the filter conditions"
-    )   
-    page: Optional[StrictInt] = Field(default=None, description="@Description Current page number (1-based indexing) @Description Example: page=2 returns the second page of results")
-    page_size: Optional[StrictInt] = Field(default=None, description="@Description Number of items per page (default may vary) @Description Example: page_size=20 returns 20 items per page")
-    total: Optional[StrictInt] = Field(default=None, description="@Description Total number of records matching the filter conditions @Description Used for calculating pagination metadata")
-    total_pages: Optional[StrictInt] = Field(default=None, description="@Description Total number of pages based on total records and page size @Description Calculated as ceil(total/page_size)")
-    __properties: ClassVar[List[str]] = ["data", "page", "page_size", "total", "total_pages"]
+        default=None,
+        description="Entity or array of entities matching the filter conditions",
+    )
+    page: Optional[StrictInt] = Field(
+        default=None,
+        description="@Description Current page number (1-based indexing) @Description Example: page=2 returns the second page of results",
+    )
+    page_size: Optional[StrictInt] = Field(
+        default=None,
+        description="@Description Number of items per page (default may vary) @Description Example: page_size=20 returns 20 items per page",
+    )
+    total: Optional[StrictInt] = Field(
+        default=None,
+        description="@Description Total number of records matching the filter conditions @Description Used for calculating pagination metadata",
+    )
+    total_pages: Optional[StrictInt] = Field(
+        default=None,
+        description="@Description Total number of pages based on total records and page size @Description Calculated as ceil(total/page_size)",
+    )
+    __properties: ClassVar[List[str]] = [
+        "data",
+        "page",
+        "page_size",
+        "total",
+        "total_pages",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
         arbitrary_types_allowed=True,
-
     )
+
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
         return pprint.pformat(self.model_dump(by_alias=True))
@@ -95,8 +117,7 @@ class QueryFilterResponse(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -114,13 +135,15 @@ class QueryFilterResponse(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({
-            "data": obj.get("data"),
-            "page": obj.get("page"),
-            "page_size": obj.get("page_size"),
-            "total": obj.get("total"),
-            "total_pages": obj.get("total_pages")
-        })
+        _obj = cls.model_validate(
+            {
+                "data": obj.get("data"),
+                "page": obj.get("page"),
+                "page_size": obj.get("page_size"),
+                "total": obj.get("total"),
+                "total_pages": obj.get("total_pages"),
+            }
+        )
         return _obj
 
 
