@@ -44,7 +44,7 @@ class DynamicApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
-    async def _connect_to_websocket(self, model: str, event: str):
+    async def _connect_to_websocket(self, model: str, event: str, callback):
         uri = self.api_client.configuration.host.replace("http://", "ws://").replace(
             "https://", "wss://"
         )
@@ -54,14 +54,14 @@ class DynamicApi:
             "Authorization": f"Bearer {self.api_client.configuration.access_token}"
         }
 
-        async with websockets.connect(uri, additional_headers=headers) as websocket:
+        async with websockets.connect(uri, extra_headers=headers) as websocket:
             async for message in websocket:
                 data = json.loads(message)
-                print(f"Received message: {data}")
+                callback(data['event'],data['model'],data['data'])
 
-    def listen(self, model: str, event: str):
+    def listen(self, model: str, event: str, callback):
         asyncio.get_event_loop().run_until_complete(
-            self._connect_to_websocket(model, event)
+            self._connect_to_websocket(model, event, callback)
         )
 
     @validate_call
