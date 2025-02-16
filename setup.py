@@ -29,6 +29,7 @@ REQUIRES = [
     "python-dateutil >= 2.8.2",
     "pydantic >= 2",
     "typing-extensions >= 4.7.1",
+    "websockets >= 15.0",
 ]
 
 setup(
@@ -43,11 +44,9 @@ setup(
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
     license="MIT",
-    long_description_content_type='text/markdown',
+    long_description_content_type="text/markdown",
     long_description="""\
     A powerful dynamic CRUD API engine that automatically generates RESTful endpoints for your data models CrudSQL provides automatic CRUD operations, filtering, pagination, and sorting capabilities for any data model. Features: - Automatic REST API generation - Dynamic model support - Complex filtering and querying - Pagination and sorting - Swagger documentation - Multiple database support (SQL &amp; NoSQL)
     """,  # noqa: E501
     package_data={"openapi_client": ["py.typed"]},
 )
-
-

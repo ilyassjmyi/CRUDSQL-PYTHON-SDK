@@ -16,7 +16,9 @@ import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
-
+import asyncio
+import websockets
+import json
 from pydantic import Field, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
@@ -41,6 +43,26 @@ class DynamicApi:
         if api_client is None:
             api_client = ApiClient.get_default()
         self.api_client = api_client
+
+    async def _connect_to_websocket(self, model: str, event: str):
+        uri = self.api_client.configuration.host.replace("http://", "ws://").replace(
+            "https://", "wss://"
+        )
+        uri = f"{uri}/ws/{model}/{event}"
+
+        headers = {
+            "Authorization": f"Bearer {self.api_client.configuration.access_token}"
+        }
+
+        async with websockets.connect(uri, additional_headers=headers) as websocket:
+            async for message in websocket:
+                data = json.loads(message)
+                print(f"Received message: {data}")
+
+    def listen(self, model: str, event: str):
+        asyncio.get_event_loop().run_until_complete(
+            self._connect_to_websocket(model, event)
+        )
 
     @validate_call
     def DeleteWhere(
@@ -558,7 +580,7 @@ class DynamicApi:
         if entity is not None:
             _body_params = {
                 "MainEntity": entity["MainEntity"],
-                "expressions": filter["Expressions"],
+                "expressions": filter["expressions"],
                 "Relations": entity["Relations"],
             }
 
