@@ -54,7 +54,7 @@ class DynamicApi:
             "Authorization": f"Bearer {self.api_client.configuration.access_token}"
         }
 
-        async with websockets.connect(uri, extra_headers=headers) as websocket:
+        async with websockets.connect(uri, additional_headers=headers) as websocket:
             async for message in websocket:
                 data = json.loads(message)
                 callback(data['event'],data['model'],data['data'])
